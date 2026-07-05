@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Домашнє копчення</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- ШАПКА -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo">
+        <i class="fas fa-fire"></i>
+        <span>Домашнє копчення</span>
+      </div>
+      <nav class="nav">
+        <a href="#" class="nav-link active">Головна</a>
+        <a href="#" class="nav-link">Продукція</a>
+        <a href="#" class="nav-link">Про нас</a>
+        <a href="#" class="nav-link">Контакти</a>
+      </nav>
+      <div class="header-right">
+        <div class="header-contacts">
+          <i class="fas fa-phone"></i>
+          <span>+380 (68) 918 7356</span>
+        </div>
+        <a href="cart.html" class="cart-btn">
+          <i class="fas fa-shopping-basket"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ГЕРОЙ -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">Справжній смак копчення</h1>
+      <p class="hero-subtitle">Традиційне копчення на фруктовій щепі з 1998 року</p>
+    </div>
+  </section>
+
+  <!-- ОСНОВНИЙ КОНТЕНТ -->
+  <main class="main-content">
+    <div class="container">
+
+      <!-- Чому обирають нас -->
+      <section class="features-section">
+        <h2 class="section-title">Чому обирають нас?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+            <div>
+              <h3>Відбірна сировина</h3>
+              <p>Тільки свіже м'ясо від перевірених фермерських господарств.</p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-tree"></i></div>
+            <div>
+              <h3>Натуральне копчення</h3>
+              <p>Використовуємо лише натуральну щепу фруктових дерев. Жодної хімії.</p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-heart"></i></div>
+            <div>
+              <h3>Зроблено з душею</h3>
+              <p>Крафтове виробництво малими партіями для максимальної якості.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Асортимент — рендериться з products.json через main.js -->
+      <section class="assortment-section">
+        <h2 class="section-title">Повний Асортимент</h2>
+        <p class="section-subtitle">Справжні смаколики гарячого копчення за традиційними рецептами</p>
+        <div id="assortmentSection">
+          <p style="text-align:center;color:#666;padding:40px 0">Завантаження...</p>
+        </div>
+      </section>
+
+      <!-- Про нас -->
+      <section class="about-section">
+        <div class="about-content">
+          <div class="about-text">
+            <h2>Наші традиції</h2>
+            <p>Ми використовуємо старовинні рецепти копчення, які передаються з покоління в покоління. Кожен продукт виготовляється з дотриманням всіх технологічних процесів для досягнення ідеального смаку.</p>
+            <p>Наше виробництво розташоване в екологічно чистому регіоні, що додає нашим продуктам особливого аромату.</p>
+          </div>
+          <div class="about-image">
+            <img src="https://gotovim-doma.ru/images/recipe/c/40/c406848b8bf7ba5aba81315876e93ee6.jpg" alt="Копчення">
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ПІДВАЛ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Контакти</h3>
+          <p><i class="fas fa-phone"></i> +380 (68) 918 7356</p>
+        </div>
+        <div class="footer-section">
+          <h3>Соцмережі</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom"></div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastText">Додано до кошика</span>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
