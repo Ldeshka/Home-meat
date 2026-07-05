@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кошик — Домашнє копчення</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ===== СТОРІНКА КОШИКА ===== */
+    .cart-page {
+      min-height: calc(100vh - 200px);
+      padding: 50px 0 80px;
+    }
+
+    .cart-page-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 35px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .cart-page-title i { color: #e74c3c; }
+
+    .cart-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* Список товарів */
+    .cart-items-block {
+      background: #1a1a1a;
+      border-radius: 14px;
+      border: 1px solid #333;
+      overflow: hidden;
+    }
+
+    .cart-items-header {
+      padding: 16px 22px;
+      border-bottom: 1px solid #333;
+      color: #777;
+      font-size: 13px;
+      display: grid;
+      grid-template-columns: 1fr 150px 110px 40px;
+      gap: 10px;
+    }
+
+    .cart-item-row {
+      display: grid;
+      grid-template-columns: 1fr 150px 110px 40px;
+      gap: 10px;
+      align-items: center;
+      padding: 16px 22px;
+      border-bottom: 1px solid #222;
+      transition: background 0.2s;
+    }
+
+    .cart-item-row:last-child { border-bottom: none; }
+    .cart-item-row:hover { background: #222; }
+
+    .cart-item-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: #f0f0f0;
+    }
+
+    .cart-item-price-unit {
+      font-size: 13px;
+      color: #777;
+      margin-top: 3px;
+    }
+
+    /* Степер ваги */
+    .qty-stepper {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #2a2a2a;
+      border-radius: 8px;
+      border: 1px solid #444;
+      padding: 4px 8px;
+      width: fit-content;
+    }
+
+    .qty-btn {
+      background: none;
+      border: none;
+      color: #e74c3c;
+      font-size: 14px;
+      cursor: pointer;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      transition: background 0.2s;
+    }
+
+    .qty-btn:hover { background: #3a3a3a; }
+
+    .qty-value {
+      min-width: 52px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .cart-item-subtotal {
+      font-size: 16px;
+      font-weight: 700;
+      color: #e74c3c;
+      text-align: right;
+    }
+
+    .cart-item-subtotal small {
+      display: block;
+      font-size: 11px;
+      color: #555;
+      font-weight: 400;
+    }
+
+    .remove-btn {
+      background: none;
+      border: none;
+      color: #555;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 6px;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .remove-btn:hover { color: #e74c3c; background: #2a2a2a; }
+
+    /* Порожній кошик */
+    .cart-empty {
+      text-align: center;
+      padding: 80px 20px;
+      display: none;
+    }
+
+    .cart-empty i { font-size: 60px; color: #333; margin-bottom: 18px; display: block; }
+    .cart-empty h3 { font-size: 20px; color: #555; margin-bottom: 12px; }
+    .cart-empty p { color: #444; margin-bottom: 28px; }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #e74c3c;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 26px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .back-btn:hover { background: #c0392b; transform: translateY(-2px); }
+
+    /* Права панель */
+    .cart-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .cart-summary {
+      background: #1a1a1a;
+      border-radius: 14px;
+      border: 1px solid #333;
+      padding: 22px;
+    }
+
+    .cart-summary h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #333;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      color: #888;
+      font-size: 14px;
+    }
+
+    .summary-row span:last-child { color: #f0f0f0; font-weight: 500; }
+
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 2px solid #e74c3c;
+    }
+
+    .summary-total span:first-child { font-size: 16px; font-weight: 700; color: #fff; }
+    .summary-total span:last-child { font-size: 22px; font-weight: 700; color: #e74c3c; }
+
+    /* Форма */
+    .order-form-block {
+      background: #1a1a1a;
+      border-radius: 14px;
+      border: 1px solid #333;
+      padding: 22px;
+    }
+
+    .order-form-block h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #333;
+    }
+
+    .form-group { margin-bottom: 14px; }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: #2a2a2a;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 11px 13px;
+      color: #f0f0f0;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: #e74c3c; }
+
+    .form-group textarea { height: 80px; resize: none; }
+
+    .submit-order-btn {
+      width: 100%;
+      background: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 18px;
+      transition: background 0.2s, transform 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .submit-order-btn:hover { background: #c0392b; transform: translateY(-2px); }
+    .submit-order-btn:disabled { background: #444; cursor: not-allowed; transform: none; }
+
+    /* Успіх */
+    .order-success {
+      text-align: center;
+      padding: 35px 15px;
+      display: none;
+    }
+
+    .order-success i { font-size: 56px; color: #27ae60; margin-bottom: 18px; display: block; }
+    .order-success h3 { font-size: 20px; color: #fff; margin-bottom: 10px; }
+    .order-success p { color: #aaa; margin-bottom: 22px; font-size: 14px; }
+
+    /* ===== АДАПТИВ КОШИКА ===== */
+    @media (max-width: 900px) {
+      .cart-layout { grid-template-columns: 1fr; }
+      .cart-items-header { display: none; }
+
+      .cart-item-row {
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        gap: 10px;
+        padding: 14px 16px;
+        position: relative;
+      }
+
+      .cart-item-row > div:first-child { grid-column: 1 / 3; }
+      .cart-item-subtotal { text-align: right; align-self: center; }
+
+      .remove-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+
+      .cart-item-name { padding-right: 28px; }
+    }
+
+    @media (max-width: 768px) {
+      .cart-page { padding: 28px 0 55px; }
+      .cart-page-title { font-size: 20px; margin-bottom: 20px; }
+
+      .cart-item-name { font-size: 13px; }
+      .cart-item-price-unit { font-size: 12px; }
+
+      .qty-btn { width: 28px; height: 28px; font-size: 12px; }
+      .qty-value { font-size: 13px; min-width: 48px; }
+
+      .cart-item-subtotal { font-size: 14px; }
+
+      .cart-summary { padding: 16px; }
+      .cart-summary h3 { font-size: 16px; }
+      .summary-total span:last-child { font-size: 20px; }
+
+      .order-form-block { padding: 16px; }
+      .order-form-block h3 { font-size: 16px; }
+
+      /* font-size 16px — не дає iOS зумити поля */
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        font-size: 16px;
+        padding: 11px 12px;
+      }
+
+      .submit-order-btn { font-size: 15px; padding: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ШАПКА -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo">
+        <i class="fas fa-fire"></i>
+        <span>Домашнє копчення</span>
+      </div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Головна</a>
+        <a href="index.html" class="nav-link">Продукція</a>
+        <a href="index.html" class="nav-link">Про нас</a>
+        <a href="index.html" class="nav-link">Контакти</a>
+      </nav>
+      <div class="header-right">
+        <div class="header-contacts">
+          <i class="fas fa-phone"></i>
+          <span>+380 (68) 918 7356</span>
+        </div>
+        <a href="cart.html" class="cart-btn active-page">
+          <i class="fas fa-shopping-basket"></i>
+          <span class="cart-count" id="cartCount" style="display:none">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- КОШИК -->
+  <main class="cart-page">
+    <div class="container">
+      <h1 class="cart-page-title">
+        <i class="fas fa-shopping-basket"></i>Кошик
+      </h1>
+
+      <!-- Основний layout -->
+      <div class="cart-layout" id="cartLayout">
+
+        <!-- Ліва колонка — товари -->
+        <div class="cart-items-block">
+          <div class="cart-items-header">
+            <span>Товар</span>
+            <span>Кількість</span>
+            <span style="text-align:right">Сума</span>
+            <span></span>
+          </div>
+          <div id="cartItemsList"></div>
+        </div>
+
+        <!-- Права колонка — підсумок + форма -->
+        <div class="cart-sidebar">
+
+          <div class="cart-summary">
+            <h3>Підсумок</h3>
+            <div class="summary-row">
+              <span>Позицій</span>
+              <span id="summaryItems">0</span>
+            </div>
+            <div class="summary-row">
+              <span>Загальна кількість</span>
+              <span id="summaryWeight">0</span>
+            </div>
+            <div class="summary-total">
+              <span>До сплати</span>
+              <span id="summaryTotal">0 грн</span>
+            </div>
+          </div>
+
+          <div class="order-form-block">
+            <h3><i class="fab fa-viber" style="color:#7360f2;margin-right:8px"></i>Замовити через Viber</h3>
+
+            <div id="orderFormContent">
+              <div class="form-group">
+                <label>Ваше ім'я *</label>
+                <input type="text" id="fieldName" placeholder="Іван Петренко">
+              </div>
+              <div class="form-group">
+                <label>Телефон *</label>
+                <input type="tel" id="fieldPhone" placeholder="+380 68 000 0000">
+              </div>
+              <div class="form-group">
+                <label>Спосіб отримання</label>
+                <select id="fieldDelivery">
+                  <option value="pickup">Самовивіз</option>
+                  <option value="nova">Нова Пошта</option>
+                  <option value="ukr">Укрпошта</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Коментар</label>
+                <textarea id="fieldComment" placeholder="Адреса відділення, побажання..."></textarea>
+              </div>
+
+              <button class="submit-order-btn" id="submitBtn" onclick="submitOrder()">
+                <i class="fab fa-viber"></i> Відправити у Viber
+              </button>
+            </div>
+
+            <div class="order-success" id="orderSuccess">
+              <i class="fas fa-check-circle"></i>
+              <h3>Замовлення відправлено!</h3>
+              <p>Viber відкрився з готовим повідомленням — надішліть його нам.</p>
+              <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> До каталогу
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Порожній кошик -->
+      <div class="cart-empty" id="cartEmpty">
+        <i class="fas fa-shopping-basket"></i>
+        <h3>Кошик порожній</h3>
+        <p>Додайте товари з каталогу, щоб оформити замовлення.</p>
+        <a href="index.html" class="back-btn">
+          <i class="fas fa-arrow-left"></i> До каталогу
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ПІДВАЛ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Контакти</h3>
+          <p><i class="fas fa-phone"></i> +380 (68) 918 7356</p>
+        </div>
+        <div class="footer-section">
+          <h3>Соцмережі</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom"></div>
+    </div>
+  </footer>
+
+  <script src="cart.js"></script>
+</body>
+</html>
