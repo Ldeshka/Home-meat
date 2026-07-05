@@ -1,0 +1,64 @@
+{
+  "groups": [
+    {
+      "id": "pork",
+      "title": "Свинина",
+      "icon": "fas fa-piggy-bank",
+      "products": [
+        { "id": "pork-1", "name": "Шинка домашня копчена", "price": 420, "unit": "кг", "image": "https://github.com/Ldeshka/Cool-moke-/blob/main/0-02-05-9eded544c6a9a6381c8c04ba16a08aa54823eaa767afa1ece207f62e95c54610_622dceb5f27efd07.jpg?raw=true" },
+        { "id": "pork-2", "name": "Ребра копчені домашні", "price": 390, "unit": "кг", "image": "https://github.com/Ldeshka/Cool-moke-/blob/main/0-02-05-5aa71898ffcfee2b9ab3ee8d9edc226927eabcb16a203a21fc210c46e87fe333_c9d806d60eadc940.jpg?raw=true" },
+        { "id": "pork-3", "name": "Рулька копчена", "price": 280, "unit": "кг", "image": "https://github.com/Ldeshka/Cool-moke-/blob/main/6831482428_w640_h640_6831482428.webp?raw=true" },
+        { "id": "pork-4", "name": "Підчеревок копчений", "price": 390, "unit": "кг", "image": "https://static.tildacdn.com/tild3764-6139-4431-a634-613732636536/139.jpg" },
+        { "id": "pork-5", "name": "Язик свинний копчений", "price": 400, "unit": "кг", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5jfxXqabFaZ7BMfl0Ntekh6YbW-qxPZ0J9Q&s" },
+        { "id": "pork-6", "name": "Вуха копчені", "price": 280, "unit": "кг", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCcrXu9YnmhPSeB7jKLfATg4LSIS30hlDCgA&s" },
+        { "id": "pork-7", "name": "Баки свинячі", "price": 160, "unit": "кг", "image": "https://tmyasa.com.ua/wp-content/uploads/2022/05/img_4586.jpg" }
+      ]
+    },
+    {
+      "id": "poultry",
+      "title": "Птах",
+      "icon": "fas fa-drumstick-bite",
+      "products": [
+        { "id": "poultry-1", "name": "Перепілка копчена", "price": 490, "unit": "кг", "image": "https://github.com/Ldeshka/Cool-moke-/blob/main/0-02-05-060ea7a798649beb5f870a170b1d3d12df749db28deb97bdd82f75a89487a253_e39d6deaef0c44d6.jpg?raw=true" },
+        { "id": "poultry-2", "name": "Качка копчена", "price": 430, "unit": "кг", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrVy4w3fdQLscKa76LJfg4wKGueZ3G3CQ5xQ&s" },
+        { "id": "poultry-3", "name": "Крила курячі копчені", "price": 270, "unit": "кг", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOVGs1mUNcYRx5vHDHMZHL7ufWF-PmaOm1g&s" },
+        { "id": "poultry-4", "name": "Філе куряче копчене", "price": 390, "unit": "кг", "image": "https://github.com/Ldeshka/Cool-moke-/blob/main/0-02-05-56e0d4b7729fc8a4fd91e3d0d192d68084a3f64c38da9a4cc01bfb897f7d2137_372f2c66eb640712.jpg?raw=true" },
+        { "id": "poultry-5", "name": "Шиї курячі копчені", "price": 170, "unit": "кг", "image": "https://ua.all.biz/img/ua/catalog/9580750.jpg" },
+        { "id": "poultry-6", "name": "Гомілка куряча копчена", "price": 270, "unit": "кг", "image": "https://img.auchan.ua/rx/q_90,ofmt_webp/auchan.ua/media/catalog/product/a/4/a40b547f9275960e0116f5a8af5132f53cc6de93e21dad0293fb41c406d19d5d.jpeg" },
+        { "id": "poultry-7", "name": "Стегно куряче копчене", "price": 320, "unit": "кг", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT82nSTAFBp_Y43w5YCnTqSCBNejRYoYifBug&s" },
+        { "id": "poultry-8", "name": "Сердечка курячі копчені", "price": 350, "unit": "кг", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMf59ND11hBc4WiXz6Uj4g9ueEPgyFhpmV4w&s" }
+      ]
+    },
+    {
+      "id": "sausages",
+      "title": "Ковбаси",
+      "icon": "fas fa-hotdog",
+      "products": [
+        { "id": "sausage-1", "name": "Ковбаса домашня", "price": 400, "unit": "кг", "image": "https://github.com/Ldeshka/Cool-moke-/blob/main/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_viber_2025-12-26_19-21-04-040.jpg?raw=true" },
+        { "id": "sausage-2", "name": "Ковбаса куряча", "price": 390, "unit": "кг", "image": "https://github.com/Ldeshka/Cool-moke-/blob/main/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_viber_2025-12-26_19-21-04-040%20(1).jpg?raw=true" },
+        { "id": "sausage-3", "name": "Ковбаса свинино-яловича", "price": 420, "unit": "кг", "image": "https://github.com/Ldeshka/Cool-moke-/blob/main/Screenshot_21.png?raw=true" }
+      ]
+    },
+    {
+      "id": "cheese",
+      "title": "Сири",
+      "icon": "fas fa-cheese",
+      "products": [
+        { "id": "cheese-1", "name": "Сир Сулугуні копчений", "price": 450, "unit": "кг", "image": "https://content2.rozetka.com.ua/goods/images/big/349469734.jpg" },
+        { "id": "cheese-2", "name": "Бринза копчена", "price": 450, "unit": "кг", "image": "https://econation.com.ua/cdn/shop/files/brynza_kopchena_3.jpg?v=1763144368" },
+        { "id": "cheese-3", "name": "Косичка (сир копчений)", "price": 480, "unit": "кг", "image": "https://assets.dots.live/misteram-public/018b9aaa-a44d-7118-bb2e-2c22b1915c8d-826x0.png" },
+        { "id": "cheese-4", "name": "Палички сир копчені", "price": 480, "unit": "кг", "image": "https://snackbarpl.com/wp-content/uploads/2024/03/%D1%81%D1%83%D0%BB%D1%83%D0%B3_%D0%BA%D0%BE%D0%BF%D1%87.jpg" }
+      ]
+    },
+    {
+      "id": "other",
+      "title": "Інше",
+      "icon": "fas fa-utensils",
+      "products": [
+        { "id": "other-1", "name": "Кролик копчений", "price": 450, "unit": "кг", "image": "https://cdn.smak.menu/images/maxone/3780/3780-42e32c6413b59882150b6fee4b73852b.jpg" },
+        { "id": "other-2", "name": "Тушонка зі свинини", "price": 160, "unit": "шт", "image": "https://github.com/Ldeshka/Cool-moke-/blob/main/0-02-04-1efc1669d83db5c4661262a53eb01c43d550cb1d1519ca63ce85567fd90ea5f7_10711e7c160170da.jpg?raw=true" },
+        { "id": "other-3", "name": "Паштет м'ясний", "price": 140, "unit": "шт", "image": "https://github.com/Ldeshka/Cool-moke-/blob/main/0-02-04-1efc1669d83db5c4661262a53eb01c43d550cb1d1519ca63ce85567fd90ea5f7_10711e7c160170da.jpg?raw=true" }
+      ]
+    }
+  ]
+}
